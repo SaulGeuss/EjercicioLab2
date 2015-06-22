@@ -25,7 +25,19 @@ public class Libro implements Serializable{
     public String FechaIng;
     public String FechaSal;
     public String Editorial ="";
+    
+    @ManyToOne
+    public Autor autor;
 
+    
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
+    }
+    
     public int getIdLibro() {
         return idLibro;
     }

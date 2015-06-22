@@ -20,7 +20,20 @@ public class Autor {
     
     public int idAutor;
     public String Nombre;
+    
+    @ManyToOne
+    public Libro libro;
 
+    
+    
+    public Libro getLibro() {
+        return libro;
+    }
+
+    public void setLibro(Libro libro) {
+        this.libro = libro;
+    }
+    
     public int getIdAutor() {
         return idAutor;
     }
