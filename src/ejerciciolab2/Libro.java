@@ -74,4 +74,8 @@ public class Libro implements Serializable{
         this.Editorial = Editorial;
     }
     
+    @Override
+    public String toString(){
+        return "IdLibro: " + idLibro + " ,Nombre: " + Nombre + " ,Serie: " + Serie + " ,Fecha ingreso: " + FechaIng + " , Fecha publicacion: " + FechaSal + " , Editorial: " + Editorial; 
+    }
 }
