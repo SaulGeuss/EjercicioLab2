@@ -5,11 +5,20 @@
  */
 package ejerciciolab2;
 
+
+import java.io.Serializable;
+import javax.persistence.*;
+
 /**
  *
  * @author adiseño.2015
  */
-public class Libro {
+
+@Entity                  //Entity en una tabla, le estoy diciendo a java que lo trate como una tabla
+
+public class Libro implements Serializable{
+    @Id
+    
     public int idLibro=0;
     public String Nombre="";
     public String Serie="";
