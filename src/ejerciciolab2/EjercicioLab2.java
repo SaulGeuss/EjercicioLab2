@@ -6,15 +6,15 @@
 package ejerciciolab2;
 
 
-////import javax.persistence.EntityManagerFactory;
-////import javax.persistence.*;
-////import ejerciciolab2.Autor;
-////import ejerciciolab2.Libro;
-////import controlador.AutorJpaController;
-////import controlador.LibroJpaController;
-////import java.util.List;
-////import java.util.logging.Level;
-////import java.util.logging.Logger;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.*;
+import ejerciciolab2.Autor;
+import ejerciciolab2.Libro;
+import controlador.AutorJpaController;
+import controlador.LibroJpaController;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 //import modelos.ModeloTablaUsuario;
 
 /**
@@ -29,11 +29,11 @@ public class EjercicioLab2 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-////        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EjercicioLab2PU");
-////        EntityManager em = emf.createEntityManager();
-////        
-////        AutorJpaController miControladorAutor = new AutorJpaController(emf);
-////        LibroJpaController miControladorLibro = new LibroJpaController(emf);
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EjercicioLab2PU");
+        EntityManager em = emf.createEntityManager();
+        
+        AutorJpaController miControladorAutor = new AutorJpaController(emf);
+        LibroJpaController miControladorLibro = new LibroJpaController(emf);
         
 //        Libro miLibro = new Libro();
 //        Autor miAutor = new Autor();
