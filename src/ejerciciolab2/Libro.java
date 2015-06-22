@@ -8,6 +8,7 @@ package ejerciciolab2;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.*;
 
 /**
  *
@@ -15,28 +16,45 @@ import javax.persistence.*;
  */
 
 @Entity                  //Entity en una tabla, le estoy diciendo a java que lo trate como una tabla
-
+@Table(name = "Libro")
 public class Libro implements Serializable{
+   
     @Id
-    @GeneratedValue
+    @Column(name="idLibro")
     public int idLibro;
     
+    @Column(name="nombre")
     public String Nombre;
+    
+    @Column(name="serie")
     public String Serie;
+    
+    @Column(name="fechaIngreso")
     public String FechaIng;
+    
+    @Column(name="fechaPublicacion")
     public String FechaPubli;
+    
+    @Column(name="editorial")
     public String Editorial;
     
-    @ManyToOne
-    public Autor autor;
-
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "LibroAutor", joinColumns = {@JoinColumn(name = "IdLibro")}, inverseJoinColumns = {@JoinColumn(name = "IdAutor")})
+    public Set<Autor> autores = new HashSet();
     
-    public Autor getAutor() {
-        return autor;
+    
+    
+    public Libro(){
     }
 
-    public void setAutor(Autor autor) {
-        this.autor = autor;
+    
+    
+    public Set<Autor> getAutores() {
+        return autores;
+    }
+
+    public void setAutores(Set<Autor> autores) {
+        this.autores = autores;
     }
     
     public int getIdLibro() {

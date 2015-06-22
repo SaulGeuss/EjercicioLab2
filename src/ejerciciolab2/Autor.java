@@ -7,6 +7,7 @@ package ejerciciolab2;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.*;
 
 /**
  *
@@ -16,23 +17,30 @@ import javax.persistence.*;
 @Entity 
 
 public class Autor implements Serializable {
+    
     @Id
-    @GeneratedValue
+    @Column(name = "IdAutor")
     public int idAutor;
     
+    @Column(name = "nombre")
     public String Nombre;
     
-    @ManyToOne
-    public Libro libro;
+    @ManyToMany(cascade = {CascadeType.ALL}, mappedBy = "autores")
+    public Set<Libro> libros = new HashSet();
 
     
     
-    public Libro getLibro() {
-        return libro;
+    public Autor(){
     }
 
-    public void setLibro(Libro libro) {
-        this.libro = libro;
+    
+    
+    public Set<Libro> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(Set<Libro> libros) {
+        this.libros = libros;
     }
     
     public int getIdAutor() {
