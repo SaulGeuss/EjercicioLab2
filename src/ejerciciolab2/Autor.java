@@ -17,8 +17,9 @@ import javax.persistence.*;
 
 public class Autor implements Serializable {
     @Id
-    
+    @GeneratedValue
     public int idAutor;
+    
     public String Nombre;
     
     @ManyToOne

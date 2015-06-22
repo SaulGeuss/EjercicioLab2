@@ -35,6 +35,12 @@ public class EjercicioLab2 {
         AutorJpaController miControladorAutor = new AutorJpaController(emf);
         LibroJpaController miControladorLibro = new LibroJpaController(emf);
         
+//        Libro miLibro = new Libro();
+//        Autor miAutor = new Autor();
+//        
+//        miLibro.setAutor(miAutor);
+//        miLibro.setEditorial("Acme");
+//        miLibro.setFechaIng("22/06/2015");
         
         
         

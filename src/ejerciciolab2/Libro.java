@@ -18,13 +18,14 @@ import javax.persistence.*;
 
 public class Libro implements Serializable{
     @Id
+    @GeneratedValue
+    public int idLibro;
     
-    public int idLibro=0;
-    public String Nombre="";
-    public String Serie="";
+    public String Nombre;
+    public String Serie;
     public String FechaIng;
-    public String FechaSal;
-    public String Editorial ="";
+    public String FechaPubli;
+    public String Editorial;
     
     @ManyToOne
     public Autor autor;
@@ -70,14 +71,14 @@ public class Libro implements Serializable{
         this.FechaIng = FechaIng;
     }
 
-    public String getFechaSal() {
-        return FechaSal;
+    public String getFechaPubli() {
+        return FechaPubli;
     }
 
-    public void setFechaSal(String FechaSal) {
-        this.FechaSal = FechaSal;
+    public void setFechaPubli(String FechaPubli) {
+        this.FechaPubli = FechaPubli;
     }
-
+    
     public String getEditorial() {
         return Editorial;
     }
@@ -88,6 +89,6 @@ public class Libro implements Serializable{
     
     @Override
     public String toString(){
-        return "IdLibro: " + idLibro + " ,Nombre: " + Nombre + " ,Serie: " + Serie + " ,Fecha ingreso: " + FechaIng + " , Fecha publicacion: " + FechaSal + " , Editorial: " + Editorial; 
+        return "IdLibro: " + idLibro + " ,Nombre: " + Nombre + " ,Serie: " + Serie + " ,Fecha ingreso: " + FechaIng + " , Fecha publicacion: " + FechaPubli + " , Editorial: " + Editorial; 
     }
 }
