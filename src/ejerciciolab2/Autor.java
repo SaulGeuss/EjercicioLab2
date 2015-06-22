@@ -15,7 +15,7 @@ import javax.persistence.*;
 
 @Entity 
 
-public class Autor {
+public class Autor implements Serializable {
     @Id
     
     public int idAutor;
