@@ -31,18 +31,38 @@ public class EjercicioLab2 {
         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("EjercicioLab2PU");
         EntityManager em = emf.createEntityManager();
-        
+//        
         AutorJpaController miControladorAutor = new AutorJpaController(emf);
         LibroJpaController miControladorLibro = new LibroJpaController(emf);
         
-//        Libro miLibro = new Libro();
-//        Autor miAutor = new Autor();
+//        Libro miLibro = new Libro(1, "Marca", "13", "22/06/2015", "13/06/1990", "Acme");
+//        Libro miLibro2 = new Libro(2, "Pulling", "4", "22/06/2015", "04/06/1989", "Acme");
 //        
-//        miLibro.setAutor(miAutor);
-//        miLibro.setEditorial("Acme");
-//        miLibro.setFechaIng("22/06/2015");
+//        Autor miAutor = new Autor(1, "Saul Geussepe");
+//        Autor miAutor2 = new Autor(2, "Rodolfo Guillermo");
+//        Autor miAutor3 = new Autor(3, "Keila Geanina");
+//        
+//        miLibro.getAutores().add(miAutor);
+//        miLibro.getAutores().add(miAutor2);
+//        miLibro2.getAutores().add(miAutor3);
+//        
+//        miAutor.getLibros().add(miLibro);
+//        miAutor2.getLibros().add(miLibro);
+//        miAutor3.getLibros().add(miLibro2);
+//        
+//        try{
+//            miControladorLibro.create(miLibro);
+//            miControladorLibro.create(miLibro2);
+//            miControladorAutor.create(miAutor);
+//            miControladorAutor.create(miAutor2);
+//            miControladorAutor.create(miAutor3);
+//        }catch (PersistenceException ex){
+//            Logger.getLogger(EjercicioLab2.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (Exception ex) {
+//            Logger.getLogger(EjercicioLab2.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
-        
+         emf.close();
         
     }
     

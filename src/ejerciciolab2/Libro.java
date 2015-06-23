@@ -20,22 +20,22 @@ import java.util.*;
 public class Libro implements Serializable{
    
     @Id
-    @Column(name="idLibro")
+//    @Column(name="idLibro")
     public int idLibro;
     
-    @Column(name="nombre")
+//    @Column(name="nombre")
     public String Nombre;
     
-    @Column(name="serie")
+//    @Column(name="serie")
     public String Serie;
     
-    @Column(name="fechaIngreso")
+//    @Column(name="fechaIngreso")
     public String FechaIng;
     
-    @Column(name="fechaPublicacion")
+//    @Column(name="fechaPublicacion")
     public String FechaPubli;
     
-    @Column(name="editorial")
+//    @Column(name="editorial")
     public String Editorial;
     
     @ManyToMany(cascade = {CascadeType.ALL})
@@ -47,6 +47,14 @@ public class Libro implements Serializable{
     public Libro(){
     }
 
+    public Libro(int idLibro, String Nombre, String Serie, String FechaIng, String FechaPubli, String Editorial ){
+        this.idLibro = idLibro;
+        this.Nombre = Nombre;
+        this.Serie =  Serie;
+        this.FechaIng =  FechaIng;
+        this.FechaPubli = FechaPubli;
+        this.Editorial = Editorial;
+    }
     
     
     public Set<Autor> getAutores() {
