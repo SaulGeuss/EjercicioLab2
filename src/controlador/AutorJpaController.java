@@ -6,23 +6,19 @@
 package controlador;
 
 import controlador.exceptions.NonexistentEntityException;
-import controlador.exceptions.PreexistingEntityException;
 import ejerciciolab2.Autor;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import ejerciciolab2.Libro;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Saul
+ * @author adiseño.2015
  */
 public class AutorJpaController implements Serializable {
 
@@ -35,31 +31,13 @@ public class AutorJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Autor autor) throws PreexistingEntityException, Exception {
-        if (autor.getLibros() == null) {
-            autor.setLibros(new HashSet<Libro>());
-        }
+    public void create(Autor autor) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Set<Libro> attachedLibros = new HashSet<Libro>();
-            for (Libro librosLibroToAttach : autor.getLibros()) {
-                librosLibroToAttach = em.getReference(librosLibroToAttach.getClass(), librosLibroToAttach.getIdLibro());
-                attachedLibros.add(librosLibroToAttach);
-            }
-            autor.setLibros(attachedLibros);
             em.persist(autor);
-            for (Libro librosLibro : autor.getLibros()) {
-                librosLibro.getAutores().add(autor);
-                librosLibro = em.merge(librosLibro);
-            }
             em.getTransaction().commit();
-        } catch (Exception ex) {
-            if (findAutor(autor.getIdAutor()) != null) {
-                throw new PreexistingEntityException("Autor " + autor + " already exists.", ex);
-            }
-            throw ex;
         } finally {
             if (em != null) {
                 em.close();
@@ -72,29 +50,7 @@ public class AutorJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Autor persistentAutor = em.find(Autor.class, autor.getIdAutor());
-            Set<Libro> librosOld = persistentAutor.getLibros();
-            Set<Libro> librosNew = autor.getLibros();
-            Set<Libro> attachedLibrosNew = new HashSet<Libro>();
-            for (Libro librosNewLibroToAttach : librosNew) {
-                librosNewLibroToAttach = em.getReference(librosNewLibroToAttach.getClass(), librosNewLibroToAttach.getIdLibro());
-                attachedLibrosNew.add(librosNewLibroToAttach);
-            }
-            librosNew = attachedLibrosNew;
-            autor.setLibros(librosNew);
             autor = em.merge(autor);
-            for (Libro librosOldLibro : librosOld) {
-                if (!librosNew.contains(librosOldLibro)) {
-                    librosOldLibro.getAutores().remove(autor);
-                    librosOldLibro = em.merge(librosOldLibro);
-                }
-            }
-            for (Libro librosNewLibro : librosNew) {
-                if (!librosOld.contains(librosNewLibro)) {
-                    librosNewLibro.getAutores().add(autor);
-                    librosNewLibro = em.merge(librosNewLibro);
-                }
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -123,11 +79,6 @@ public class AutorJpaController implements Serializable {
                 autor.getIdAutor();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The autor with id " + id + " no longer exists.", enfe);
-            }
-            Set<Libro> libros = autor.getLibros();
-            for (Libro librosLibro : libros) {
-                librosLibro.getAutores().remove(autor);
-                librosLibro = em.merge(librosLibro);
             }
             em.remove(autor);
             em.getTransaction().commit();

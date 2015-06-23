@@ -16,11 +16,11 @@ import java.util.*;
  */
 
 @Entity                  //Entity en una tabla, le estoy diciendo a java que lo trate como una tabla
-@Table(name = "Libro")
+//@Table(name = "Libro")
 public class Libro implements Serializable{
    
     @Id
-//    @Column(name="idLibro")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int idLibro;
     
 //    @Column(name="nombre")
@@ -38,32 +38,41 @@ public class Libro implements Serializable{
 //    @Column(name="editorial")
     public String Editorial;
     
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name = "LibroAutor", joinColumns = {@JoinColumn(name = "IdLibro")}, inverseJoinColumns = {@JoinColumn(name = "IdAutor")})
-    public Set<Autor> autores = new HashSet();
+    @ManyToOne
+    public Autor IdAutor;
     
     
     
     public Libro(){
     }
 
-    public Libro(int idLibro, String Nombre, String Serie, String FechaIng, String FechaPubli, String Editorial ){
-        this.idLibro = idLibro;
+    public Libro(String Nombre, String Serie, String FechaIng, String FechaPubli, String Editorial ){
+//        this.idLibro = idLibro;
         this.Nombre = Nombre;
         this.Serie =  Serie;
         this.FechaIng =  FechaIng;
         this.FechaPubli = FechaPubli;
         this.Editorial = Editorial;
     }
-    
-    
-    public Set<Autor> getAutores() {
-        return autores;
+
+    public Autor getIdAutor() {
+        return IdAutor;
     }
 
-    public void setAutores(Set<Autor> autores) {
-        this.autores = autores;
+    public void setIdAutor(Autor IdAutor) {
+        this.IdAutor = IdAutor;
     }
+    
+    
+    
+    
+//    public Set<Autor> getAutores() {
+//        return autores;
+//    }
+//
+//    public void setAutores(Set<Autor> autores) {
+//        this.autores = autores;
+//    }
     
     public int getIdLibro() {
         return idLibro;

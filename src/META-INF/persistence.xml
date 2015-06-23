@@ -5,7 +5,7 @@
     <class>ejerciciolab2.Autor</class>
     <class>ejerciciolab2.Libro</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/EjercicoLab2"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/EjercicioLab2"/>
       <property name="javax.persistence.jdbc.user" value="usuario"/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
       <property name="javax.persistence.jdbc.password" value="usuario"/>

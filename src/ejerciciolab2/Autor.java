@@ -19,33 +19,33 @@ import java.util.*;
 public class Autor implements Serializable {
     
     @Id
-//    @Column(name = "IdAutor")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int idAutor;
     
 //    @Column(name = "nombre")
     public String Nombre;
     
-    @ManyToMany(cascade = {CascadeType.ALL}, mappedBy = "autores")
-    public Set<Libro> libros = new HashSet();
+//    @ManyToMany(cascade = {CascadeType.ALL}, mappedBy = "autores")
+//    public Set<Libro> libros = new HashSet();
 
     
     
     public Autor(){
     }
 
-    public Autor(int idAutor, String Nombre){
-        this.idAutor = idAutor;
+    public Autor(String Nombre){
+//        this.idAutor = idAutor;
         this.Nombre = Nombre;
     }
     
     
-    public Set<Libro> getLibros() {
-        return libros;
-    }
-
-    public void setLibros(Set<Libro> libros) {
-        this.libros = libros;
-    }
+//    public Set<Libro> getLibros() {
+//        return libros;
+//    }
+//
+//    public void setLibros(Set<Libro> libros) {
+//        this.libros = libros;
+//    }
     
     public int getIdAutor() {
         return idAutor;
