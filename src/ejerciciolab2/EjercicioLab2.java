@@ -36,30 +36,30 @@ public class EjercicioLab2 {
         LibroJpaController miControladorLibro = new LibroJpaController(emf);
         
         
-//        Autor miAutor = new Autor("Saul Geussepe");
-//        Autor miAutor2 = new Autor("Rodolfo Guillermo");
-//        Autor miAutor3 = new Autor("Keila Geanina");
-//        
-//        
-//        Libro miLibro = new Libro("Marca", "13", "22/06/2015", "13/06/1990", "Acme");
-//        miLibro.setIdAutor(miAutor);
-////        miLibro.setIdAutor(miAutor2);
-//        Libro miLibro2 = new Libro("Pulling", "4", "22/06/2015", "04/06/1989", "Acme");
-//        miLibro2.setIdAutor(miAutor2);
-//        
-//        
-//        
-//        
-//        try{
-//            miControladorAutor.create(miAutor);
-//            miControladorLibro.create(miLibro);
-//            
-//        }catch (PersistenceException ex){
-//            Logger.getLogger(EjercicioLab2.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (Exception ex) {
-//            Logger.getLogger(EjercicioLab2.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
+        Autor miAutor = new Autor("Saul Geussepe");
+        Autor miAutor2 = new Autor("Rodolfo Guillermo");
+        Autor miAutor3 = new Autor("Keila Geanina");
+        
+        
+        Libro miLibro = new Libro("Marca", "13", "22/06/2015", "13/06/1990", "Acme");
+        miLibro.setIdAutor(miAutor);
+//        miLibro.setIdAutor(miAutor2);
+        Libro miLibro2 = new Libro("Pulling", "4", "22/06/2015", "04/06/1989", "Acme");
+        miLibro2.setIdAutor(miAutor2);
+        
+        
+        
+        
+        try{
+            miControladorAutor.create(miAutor);
+            miControladorLibro.create(miLibro);
+            
+        }catch (PersistenceException ex){
+            Logger.getLogger(EjercicioLab2.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(EjercicioLab2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
          emf.close();
         
     }
